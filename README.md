@@ -15,9 +15,9 @@ apt-get install apache2 php5 php5-cli php5-fpm php5-gd libssh2-php libapache2-mo
 a2enmod rewrite headers
 php5enmod mcrypt
 
-/*Open the files below with the given command, delete all of the contents of file and replace it with the text found below.*/
+/*Open the files below with the given command, delete all of the contents of file*/
 nano /etc/apache2/sites-enabled/000-default.conf
-
+/*Replace the text in the file with the text below.*/
 <VirtualHost *:80>
         #ServerName example.com
         #ServerAlias www.example.com
@@ -31,7 +31,7 @@ nano /etc/apache2/sites-enabled/000-default.conf
         </Directory>
 </VirtualHost>
 
-/*Navigate to /html, remove all files inside and clean the directory. THen up in the hierarchy create a new directory /staging*/
+/*Navigate to /html, remove all files inside and clean the directory.*/
 cd /var/www/html
 rm -rf *
 cd ../
