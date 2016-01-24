@@ -1,4 +1,5 @@
 # Set-up for the DEVO stack
+<pre>
 /*use the root user*/
 sudo su
 /*re-synchronize the package index files from their sources*/
@@ -44,6 +45,6 @@ chmod -R 744 .
 chown -R www-data:www-data .
 /*restart apache*/
 service apache2 restart
-
+</pre>
 
 ==Console ==
