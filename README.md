@@ -20,23 +20,25 @@ AWS Tutorial RDS             | Type: mySQL, Port range: 3306, Sources: EC2 Stagi
 
 *Outbound for the rest is _All traffic_ from _Anywhere_* 
 
-9. Let's start our EC2 Staging instance. 
-10. Let's create our Load Balancer (use the */* as a ping path and your ELB security group).
-11. Let's create our RDS instance (don't forget to create a 'Subnet group' first).
-12. Log on to the staging box and let's run the install commands below - the Set-up for the DEVO stack category.
-13. Let's go into OpsWorks and create our stack, layer and application.
-14. Before starting we should go to our cookbooks and update the wpconfig/files/default/wp-config.php file. Cahnge WP_HOME and WP_SITEURL with the DNS name of the Load Balancer and DB_NAME, DB_USER, DB_PASSWORD, DB_HOST with the corresponding details from step 11. Don't forget to commit your changes!
-15. For our stack we are going to create a 'Chef 11 stack', use Ubuntu as our OS for all of our instances, custom cookbooks (for me it's https://github.com/maddalinalazar/wordpress-demo_4_4_1_cookbooks).
-16. For our layer select the AWS Tutorial EC2 Production security group and use the load balancer created at step 10. Enable public IP addresses for the layer (Network tab) and add your custom cookbooks (wplogin::default, wpconfig::default) to the deployment recipes.
-17. Go ahead and create an application. This should point to the repository that containts the wordpress source files (for me it's https://github.com/maddalinalazar/wordpress-demo_4_4_1.git). After the set-up is done add instances - one for each availability zones.
-18. Now that everything is ready click on 'Start all instances!'. When all of the machines are online go ahead an click on the link next to 'Using ELB' and on the next page click on the link next to 'DNS Name'. Now your website should be available!
+10. Let's start our EC2 Staging instance.
+11. Let's create our Load Balancer (use the */* as a ping path and your ELB security group).
+12. Let's create our RDS instance (don't forget to create a 'Subnet group' first).
+13. Log on to the staging box and let's run the install commands below - the Set-up for the DEVO stack category.
+14. Let's go into OpsWorks and create our stack, layer and application.
+15. Before starting we should go to our cookbooks and update the wpconfig/files/default/wp-config.php file. Cahnge WP_HOME and WP_SITEURL with the DNS name of the Load Balancer and DB_NAME, DB_USER, DB_PASSWORD, DB_HOST with the corresponding details from step 11. Don't forget to commit your changes!
+16. For our stack we are going to create a 'Chef 11 stack', use Ubuntu as our OS for all of our instances, custom cookbooks (for me it's https://github.com/maddalinalazar/wordpress-demo_4_4_1_cookbooks).
+17. For our layer select the AWS Tutorial EC2 Production security group and use the load balancer created at step 10. Enable public IP addresses for the layer (Network tab) and add your custom cookbooks (wplogin::default, wpconfig::default) to the deployment recipes.
+18. Go ahead and create an application. This should point to the repository that containts the wordpress source files (for me it's https://github.com/maddalinalazar/wordpress-demo_4_4_1.git). After the set-up is done add instances - one for each availability zones.
+19. Now that everything is ready click on 'Start all instances!'. When all of the machines are online go ahead an click on the link next to 'Using ELB' and on the next page click on the link next to 'DNS Name'. Now your website should be available!
 
 
 # Set-up for the DEVO stack by running the following commands (use Terminal on MAC and Putty for Windows):
 <!--connect to the staging EC2 instance -->
 If you own a MAC type this command into the Terminal window: 
-ssh -i *your-user-name-awsdemo-key-your-selected-region* ubuntu@ec2_staging_instance_name, where you should replace *your-user-name-awsdemo-key-your-selected-region* with the name of the key-pair create at step 7 and *ec2_staging_instance_name* with the Public DNS value of your instance.  
+ssh -i *your-user-name-awsdemo-key-your-selected-region* ubuntu@ec2_staging_instance_name, where you should replace *your-user-name-awsdemo-key-your-selected-region* with the name of the key-pair create at step 7 and *ec2_staging_instance_name* with the Public DNS value of your instance. 
+<!-- -->
 To get the Public DNS value of your instance, go to the EC2 console page - AWS console, click on 'Services' (top right - on the black banner menu) and click on 'EC2'. Click on 'EC2 dashboard' (right side of the screen) and then on the 'Running Instances' link and a table of all running instances should appear. Select your EC2 staging instance (the instance we created at step 9) and now a series of details should appear in the bottom of the page. Look for the 'Public DNS' field and once you have located it the value next to it is the value that you are interested in (ec2-...-compute.amazonaws.com). Copy the text and paste it into the command above.  
+<!-- -->
 For Windows follow the instructions from: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html 
 <!-- use the root user --> 
 sudo su  
